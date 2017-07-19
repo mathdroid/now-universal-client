@@ -39,7 +39,7 @@ Returns an array with all deployments.
 | --- | --- | --- |
 | token | <code>String</code> | Your ZEIT token |
 
-Resolves to an object with `deployments` field, containing an array of deployments.
+Resolves to an array of deployments.
 
 <a name="Now+getDeployment"></a>
 

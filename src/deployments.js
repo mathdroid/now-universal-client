@@ -19,7 +19,7 @@ const getDeployment = ({ token, id }) =>
     method: HTTP.GET,
     url: ENDPOINTS.DEPLOYMENT_BY_ID(id),
     token
-  });
+  }).then(({ deployments }) => deployments);
 
 const deleteDeployment = ({ token, id }) =>
   fetch({
