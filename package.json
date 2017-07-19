@@ -1,6 +1,6 @@
 {
   "name": "now-universal-client",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Now API universal wrapper based on axios",
   "main": "dist/index.js",
   "files": [
