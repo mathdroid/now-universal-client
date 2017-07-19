@@ -25,6 +25,10 @@ console.log(deployments)
 
 ## API
 
+```js
+const now = require('now-universal-client')
+```
+
 ### now.getDeployments({token}) ⇒ <code>Promise</code>
 Returns an array with all deployments.
 
@@ -33,7 +37,9 @@ Returns an array with all deployments.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| [callback] | <code>function</code> | Callback will be called with `(err, deployments)` |
+| token | <code>String</code> | Your ZEIT token |
+
+Resolves to an object with `deployments` field, containing an array of deployments.
 
 <a name="Now+getDeployment"></a>
 
@@ -45,8 +51,10 @@ Returns an object with deployment data.
 
 | Param | Type | Description |
 | --- | --- | --- |
+| token | <code>String</code> | Your ZEIT token |
 | id | <code>String</code> | ID of deployment |
-| [callback] | <code>function</code> | Callback will be called with `(err, deployment)` |
+
+Resolves to the deployment object.
 
 <a name="Now+createDeployment"></a>
 
@@ -58,8 +66,10 @@ Creates a new deployment and returns its data.
 
 | Param | Type | Description |
 | --- | --- | --- |
+| token | <code>String</code> | Your ZEIT token |
 | data | <code>Object</code> | The keys should represent a file path, with their respective values containing the file contents. |
-| [callback] | <code>function</code> | Callback will be called with `(err, deployment)` |
+
+Resolves to the deployment object.
 
 <a name="Now+deleteDeployment"></a>
 
@@ -71,8 +81,10 @@ Deletes a deployment and returns its data.
 
 | Param | Type | Description |
 | --- | --- | --- |
+| token | <code>String</code> | Your ZEIT token |
 | id | <code>String</code> | ID of deployment |
-| [callback] | <code>function</code> | Callback will be called with `(err, deployment)` |
+
+Resolves to the deployment object.
 
 <a name="Now+getFiles"></a>
 
@@ -84,8 +96,10 @@ Returns an array with the file structure.
 
 | Param | Type | Description |
 | --- | --- | --- |
+| token | <code>String</code> | Your ZEIT token |
 | id | <code>String</code> | ID of deployment |
-| [callback] | <code>function</code> | Callback will be called with `(err, fileStructure)` |
+
+Resolves to an array with the file structure.
 
 <a name="Now+getFile"></a>
 
@@ -97,9 +111,11 @@ Returns the content of a file either as string or object, depending on the filet
 
 | Param | Type | Description |
 | --- | --- | --- |
+| token | <code>String</code> | Your ZEIT token |
 | id | <code>String</code> | ID of deployment |
 | fileId | <code>String</code> | ID of the file |
-| [callback] | <code>function</code> | Callback will be called with `(err, fileContent)` |
+
+Resolves to either a String or an Object of the file's content.
 
 <a name="Now+getDomains"></a>
 
@@ -111,7 +127,9 @@ Returns an array with all domain names and related aliases.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| [callback] | <code>function</code> | Callback will be called with `(err, domains)` |
+| token | <code>String</code> | Your ZEIT token |
+
+Resolves to an array with all domain names and related aliases.
 
 <a name="Now+addDomain"></a>
 
@@ -123,8 +141,10 @@ Adds a new domain and returns its data.
 
 | Param | Type | Description |
 | --- | --- | --- |
+| token | <code>String</code> | Your ZEIT token |
 | domain | <code>object</code> | An object containing a string `name` and a boolean `isExternalDNS` |
-| [callback] | <code>function</code> | Callback will be called with `(err)` |
+
+Resolves to an object with the domain's data.
 
 <a name="Now+deleteDomain"></a>
 
@@ -136,8 +156,8 @@ Deletes a domain name.
 
 | Param | Type | Description |
 | --- | --- | --- |
+| token | <code>String</code> | Your ZEIT token |
 | name | <code>String</code> | Domain name |
-| [callback] | <code>function</code> | Callback will be called with `(err)` |
 
 <a name="Now+getDomainRecords"></a>
 
@@ -149,8 +169,10 @@ Returns an array with all DNS records configured for a domain name.
 
 | Param | Type | Description |
 | --- | --- | --- |
+| token | <code>String</code> | Your ZEIT token |
 | name | <code>String</code> | Domain name |
-| [callback] | <code>function</code> | Callback will be called with `(err, domains)` |
+
+Resolves to an array with all DNS records configured for a domain name.
 
 ## now.addDomainRecord({token, domain, recordData}) ⇒ <code>Promise</code>
 Adds a new DNS record for a domain.
@@ -160,9 +182,9 @@ Adds a new DNS record for a domain.
 
 | Param | Type | Description |
 | --- | --- | --- |
+| token | <code>String</code> | Your ZEIT token |
 | domain | <code>object</code> | An object containing a string `name` and a boolean `isExternalDNS` |
 | recordData | <code>object</code> | An object containing a description of the new record according to the [documentation](https://zeit.co/api#post-domain-records). |
-| [callback] | <code>function</code> | Callback will be called with `(err)` |
 
 <a name="Now+deleteDomainRecord"></a>
 
@@ -174,9 +196,9 @@ Deletes a DNS record associated with a domain.
 
 | Param | Type | Description |
 | --- | --- | --- |
+| token | <code>String</code> | Your ZEIT token |
 | domain | <code>String</code> | Domain name |
 | recordId | <code>String</code> | Record ID |
-| [callback] | <code>function</code> | Callback will be called with `(err)` |
 
 <a name="Now+getCertificates"></a>
 
@@ -188,8 +210,10 @@ Returns an array of all certificates.
 
 | Param | Type | Description |
 | --- | --- | --- |
+| token | <code>String</code> | Your ZEIT token |
 | [cn] | <code>String</code> | Common Name |
-| [callback] | <code>function</code> | Callback will be called with `(err, certs)` |
+
+Resolves to an array of all certificates.
 
 <a name="Now+createCertificate"></a>
 
@@ -201,8 +225,8 @@ Creates a new certificate for a domain registered to the user.
 
 | Param | Type | Description |
 | --- | --- | --- |
+| token | <code>String</code> | Your ZEIT token |
 | cn | <code>String</code> | Common Name |
-| [callback] | <code>function</code> | Callback will be called with `(err)` |
 
 <a name="Now+renewCertificate"></a>
 
@@ -214,8 +238,8 @@ Renews an existing certificate.
 
 | Param | Type | Description |
 | --- | --- | --- |
+| token | <code>String</code> | Your ZEIT token |
 | cn | <code>String</code> | Common Name |
-| [callback] | <code>function</code> | Callback will be called with `(err)` |
 
 <a name="Now+replaceCertificate"></a>
 
@@ -227,11 +251,13 @@ Replace an existing certificate.
 
 | Param | Type | Description |
 | --- | --- | --- |
+| token | <code>String</code> | Your ZEIT token |
 | cn | <code>String</code> | Common Name |
 | cert | <code>String</code> | X.509 certificate |
 | key | <code>String</code> | Private key for the certificate |
 | ca | <code>String</code> | CA certificate chain |
-| [callback] | <code>function</code> | Callback will be called with `(err, created)` |
+
+Resolves to an object with the new certificate details.
 
 <a name="Now+deleteCertificate"></a>
 
@@ -243,8 +269,8 @@ Deletes a certificate.
 
 | Param | Type | Description |
 | --- | --- | --- |
+| token | <code>String</code> | Your ZEIT token |
 | cn | <code>String</code> | Common Name |
-| [callback] | <code>function</code> | Callback will be called with `(err)` |
 
 <a name="Now+getAliases"></a>
 
@@ -256,8 +282,10 @@ Returns an array with all aliases.
 
 | Param | Type | Description |
 | --- | --- | --- |
+| token | <code>String</code> | Your ZEIT token |
 | [id OR callback] | <code>String</code> &#124; <code>function</code> | ID of deployment or callback |
-| [callback] | <code>function</code> | Callback will be called with `(err, aliases)` |
+
+Resolves to an array with all aliases.
 
 <a name="Now+createAlias"></a>
 
@@ -269,9 +297,11 @@ Creates an alias for the given deployment.
 
 | Param | Type | Description |
 | --- | --- | --- |
+| token | <code>String</code> | Your ZEIT token |
 | id | <code>String</code> | ID of deployment |
 | alias | <code>String</code> | Hostname or custom url for the alias |
-| [callback] | <code>function</code> | Callback will be called with `(err, data)` |
+
+Resolves to an Object with the alias data
 
 <a name="Now+deleteAlias"></a>
 
@@ -283,8 +313,10 @@ Deletes an alias and returns a status.
 
 | Param | Type | Description |
 | --- | --- | --- |
+| token | <code>String</code> | Your ZEIT token |
 | id | <code>String</code> | ID of alias |
-| [callback] | <code>function</code> | Callback will be called with `(err, status)` |
+
+Resolves to the status
 
 <a name="Now+getSecrets"></a>
 
@@ -296,8 +328,10 @@ Returns an array with all secrets.
 
 | Param | Type | Description |
 | --- | --- | --- |
+| token | <code>String</code> | Your ZEIT token |
 | [id OR callback] | <code>String</code> &#124; <code>function</code> | ID of deployment or callback |
-| [callback] | <code>function</code> | Callback will be called with `(err, secrets)` |
+
+Resolves to an array with all secrets.
 
 <a name="Now+createSecret"></a>
 
@@ -309,9 +343,11 @@ Creates a secret and returns its ID.
 
 | Param | Type | Description |
 | --- | --- | --- |
+| token | <code>String</code> | Your ZEIT token |
 | name | <code>String</code> | name for the secret |
 | value | <code>String</code> | value for the secret |
-| [callback] | <code>function</code> | Callback will be called with `(err, data)` |
+
+Resolves to a secret's ID.
 
 <a name="Now+renameSecret"></a>
 
@@ -323,9 +359,11 @@ Changes the name of the given secret and returns its ID and name.
 
 | Param | Type | Description |
 | --- | --- | --- |
+| token | <code>String</code> | Your ZEIT token |
 | id | <code>String</code> | id or name of the secret |
 | name | <code>String</code> | new name for the secret |
-| [callback] | <code>function</code> | Callback will be called with `(err, data)` |
+
+Resolves to a secret's ID and name.
 
 <a name="Now+deleteSecret"></a>
 
@@ -337,8 +375,10 @@ Deletes a secret and returns its ID.
 
 | Param | Type | Description |
 | --- | --- | --- |
+| token | <code>String</code> | Your ZEIT token |
 | id | <code>String</code> | ID or name of the secret |
-| [callback] | <code>function</code> | Callback will be called with `(err, status)` |
+
+Resolves to a secret's status.
 
 ## License
 

@@ -27,7 +27,7 @@ api.fetch = ({ method, url, params, data, token }) => {
       return resolve(data);
     })
     .catch(err => {
-      const { response: { data } } = err;
+      const { response: { data = { error: "No data" } } } = err;
       return reject(data);
     });
 };
