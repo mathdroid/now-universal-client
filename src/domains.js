@@ -1,4 +1,4 @@
-const { fetch, HTTP } = require("./api.js");
+const { handleRequest, HTTP } = require("./api");
 
 const ENDPOINTS = {
   DOMAINS: () => "/domains",
@@ -8,7 +8,7 @@ const ENDPOINTS = {
 };
 
 const getDomains = ({ token }) =>
-  fetch({
+  handleRequest({
     method: HTTP.GET,
     url: ENDPOINTS.DOMAINS(),
     token
@@ -20,7 +20,7 @@ const getDomains = ({ token }) =>
 //   isExternal: false
 // }
 const addDomain = ({ token, data }) =>
-  fetch({
+  handleRequest({
     method: HTTP.POST,
     url: ENDPOINTS.DOMAINS(),
     token,
@@ -28,21 +28,21 @@ const addDomain = ({ token, data }) =>
   });
 
 const deleteDomain = ({ token, name }) =>
-  fetch({
+  handleRequest({
     method: HTTP.DELETE,
     url: ENDPOINTS.DOMAIN(name),
     token
   });
 
 const getDomainRecords = ({ token, domain }) =>
-  fetch({
+  handleRequest({
     method: HTTP.GET,
     url: ENDPOINTS.RECORDS(domain),
     token
   });
 
 const addDomainRecord = ({ token, domain, data }) =>
-  fetch({
+  handleRequest({
     method: HTTP.POST,
     url: ENDPOINTS.RECORDS(domain),
     token,
@@ -50,7 +50,7 @@ const addDomainRecord = ({ token, domain, data }) =>
   });
 
 const deleteDomainRecord = ({ token, domain, recordId }) =>
-  fetch({
+  handleRequest({
     method: HTTP.DELETE,
     url: ENDPOINTS.RECORD(domain, recordId),
     token

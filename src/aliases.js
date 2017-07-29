@@ -1,4 +1,4 @@
-const { fetch, HTTP } = require("./api.js");
+const { handleRequest, HTTP } = require("./api");
 
 const ENDPOINTS = {
   ALIASES: () => "/aliases",
@@ -7,14 +7,14 @@ const ENDPOINTS = {
 };
 
 const getAliases = ({ token, id }) =>
-  fetch({
+  handleRequest({
     method: HTTP.GET,
     url: (id && ENDPOINTS.DEPLOYMENTS_ALIASES(id)) || ENDPOINTS.ALIASES(),
     token
   });
 
 const createAlias = ({ token, id, alias }) =>
-  fetch({
+  handleRequest({
     method: HTTP.POST,
     url: ENDPOINTS.DEPLOYMENTS_ALIASES(id),
     data: { alias },
@@ -22,7 +22,7 @@ const createAlias = ({ token, id, alias }) =>
   });
 
 const deleteAlias = ({ token, id }) =>
-  fetch({
+  handleRequest({
     method: HTTP.DELETE,
     url: ENDPOINTS.ALIAS(id),
     token

@@ -1,21 +1,20 @@
 const { create } = require("axios");
 const { resolve, reject } = require("bluebird");
 
-const api = create({
-  baseURL: "https://api.zeit.co/now",
-  // baseURL: "https://zeit.co/api",
+const meta = create({
+  baseURL: "https://zeit.co/api",
   responseType: "json",
   timeout: 10000
 });
 
-api.handleRequest = ({ method, url, data, token }) => {
+meta.handleRequest = ({ method, url, data, token }) => {
   let payload;
 
   if (/(post|put|patch)/i.test(method)) {
     payload = data;
   }
 
-  return api({
+  return meta({
     method,
     url,
 
@@ -33,7 +32,7 @@ api.handleRequest = ({ method, url, data, token }) => {
     });
 };
 
-api.HTTP = {
+meta.HTTP = {
   GET: "GET",
   POST: "POST",
   PUT: "PUT",
@@ -41,4 +40,4 @@ api.HTTP = {
   DELETE: "DELETE"
 };
 
-module.exports = api;
+module.exports = meta;

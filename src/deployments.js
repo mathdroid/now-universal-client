@@ -1,4 +1,4 @@
-const { fetch, HTTP } = require("./api.js");
+const { handleRequest, HTTP } = require("./api");
 
 const ENDPOINTS = {
   DEPLOYMENTS: () => "/deployments",
@@ -8,28 +8,28 @@ const ENDPOINTS = {
 };
 
 const getDeployments = ({ token }) =>
-  fetch({
+  handleRequest({
     method: HTTP.GET,
     url: ENDPOINTS.DEPLOYMENTS(),
     token
   });
 
 const getDeployment = ({ token, id }) =>
-  fetch({
+  handleRequest({
     method: HTTP.GET,
     url: ENDPOINTS.DEPLOYMENT_BY_ID(id),
     token
   }).then(({ deployments }) => deployments);
 
 const deleteDeployment = ({ token, id }) =>
-  fetch({
+  handleRequest({
     method: HTTP.DELETE,
     url: ENDPOINTS.DEPLOYMENT_BY_ID(id),
     token
   });
 
 const createDeployment = ({ token, data }) =>
-  fetch({
+  handleRequest({
     method: HTTP.POST,
     url: ENDPOINTS.DEPLOYMENTS(),
     token,
@@ -37,14 +37,14 @@ const createDeployment = ({ token, data }) =>
   });
 
 const getFiles = ({ token, id }) =>
-  fetch({
+  handleRequest({
     method: HTTP.GET,
     url: ENDPOINTS.DEPLOYMENT_FILES(id),
     token
   });
 
 const getFile = ({ token, id, fileId }) =>
-  fetch({
+  handleRequest({
     method: HTTP.GET,
     url: ENDPOINTS.DEPLOYMENT_FILES_BY_ID(id, fileId),
     token

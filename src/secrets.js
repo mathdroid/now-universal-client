@@ -1,4 +1,4 @@
-const { fetch, HTTP } = require("./api.js");
+const { handleRequest, HTTP } = require("./api");
 
 const ENDPOINTS = {
   SECRETS: () => "/secrets",
@@ -6,14 +6,14 @@ const ENDPOINTS = {
 };
 
 const getSecrets = ({ token }) =>
-  fetch({
+  handleRequest({
     method: HTTP.GET,
     url: ENDPOINTS.SECRETS(),
     token
   });
 
 const createSecret = ({ token, name, value }) =>
-  fetch({
+  handleRequest({
     method: HTTP.POST,
     url: ENDPOINTS.SECRETS(),
     data: {
@@ -24,7 +24,7 @@ const createSecret = ({ token, name, value }) =>
   });
 
 const renameSecret = ({ token, id, name }) =>
-  fetch({
+  handleRequest({
     method: HTTP.PATCH,
     url: ENDPOINTS.SECRET(id),
     data: { name },
@@ -32,7 +32,7 @@ const renameSecret = ({ token, id, name }) =>
   });
 
 const deleteSecret = ({ token, id }) =>
-  fetch({
+  handleRequest({
     method: HTTP.DELETE,
     url: ENDPOINTS.SECRET(id),
     token

@@ -1,4 +1,4 @@
-const { fetch, HTTP } = require("./api.js");
+const { handleRequest, HTTP } = require("./api");
 
 const ENDPOINTS = {
   CERTS: () => "/certs",
@@ -6,14 +6,14 @@ const ENDPOINTS = {
 };
 
 const getCertificates = ({ token, cn }) =>
-  fetch({
+  handleRequest({
     method: HTTP.GET,
     url: (cn && ENDPOINTS.CERT(cn)) || ENDPOINTS.CERTS(),
     token
   });
 
 const createCertificate = ({ token, cn }) =>
-  fetch({
+  handleRequest({
     method: HTTP.POST,
     url: ENDPOINTS.CERTS(),
     data: {
@@ -23,7 +23,7 @@ const createCertificate = ({ token, cn }) =>
   });
 
 const renewCertificate = ({ token, cn }) =>
-  fetch({
+  handleRequest({
     method: HTTP.POST,
     url: ENDPOINTS.CERTS(),
     data: {
@@ -34,7 +34,7 @@ const renewCertificate = ({ token, cn }) =>
   });
 
 const replaceCertificate = ({ token, cn, cert, key, ca }) =>
-  fetch({
+  handleRequest({
     method: HTTP.PUT,
     url: ENDPOINTS.CERTS(),
     data: {
@@ -47,7 +47,7 @@ const replaceCertificate = ({ token, cn, cert, key, ca }) =>
   });
 
 const deleteCertificate = ({ token, cn }) =>
-  fetch({
+  handleRequest({
     method: HTTP.DELETE,
     url: ENDPOINTS.CERT(cn),
     token
