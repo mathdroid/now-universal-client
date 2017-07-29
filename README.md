@@ -380,6 +380,18 @@ Deletes a secret and returns its ID.
 
 Resolves to a secret's status.
 
+### now.getEvents({token}) ⇒ <code>Promise</code>
+Get the latest events happened in your team.
+
+**Kind**: instance method of <code>[Now](#Now)</code>  
+**See**: https://zeit.co/api#delete-now-secrets  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| token | <code>String</code> | Your ZEIT token |
+
+Resolves to an array of events.
+
 ## License
 
 See [License](./LICENSE).

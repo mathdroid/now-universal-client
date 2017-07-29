@@ -10,7 +10,7 @@ const getEvents = ({ token }) =>
     method: HTTP.GET,
     url: ENDPOINTS.EVENTS(),
     token
-  });
+  }).then(({ events }) => events);
 // uev_4jDOiPTvZS7tarxKT4ofXdMU
 const getEvent = ({ token, id }) =>
   handleRequest({
