@@ -9,7 +9,7 @@ const getTeams = ({ token }) =>
     method: HTTP.GET,
     url: ENDPOINTS.TEAMS(),
     token
-  });
+  }).then(({ teams }) => teams);
 
 module.exports = {
   getTeams

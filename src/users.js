@@ -9,7 +9,7 @@ const getUser = ({ token }) =>
     method: HTTP.GET,
     url: ENDPOINTS.USER(),
     token
-  });
+  }).then(({ user }) => user);
 
 module.exports = {
   getUser
