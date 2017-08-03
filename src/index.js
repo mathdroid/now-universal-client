@@ -4,6 +4,8 @@ const deployments = require("./deployments");
 const domains = require("./domains");
 const events = require("./events");
 const secrets = require("./secrets");
+const teams = require("./teams");
+const users = require("./users");
 
 const client = Object.assign(
   {},
@@ -12,7 +14,9 @@ const client = Object.assign(
   deployments,
   domains,
   events,
-  secrets
+  secrets,
+  teams,
+  users
 );
 
 module.exports = client;
