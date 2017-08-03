@@ -383,14 +383,30 @@ Resolves to a secret's status.
 ### now.getEvents({token}) ⇒ <code>Promise</code>
 Get the latest events happened in your team.
 
-**Kind**: instance method of <code>[Now](#Now)</code>  
-**See**: https://zeit.co/api#delete-now-secrets  
-
 | Param | Type | Description |
 | --- | --- | --- |
 | token | <code>String</code> | Your ZEIT token |
 
 Resolves to an array of events.
+
+### now.getUser({token}) ⇒ <code>Promise</code>
+Get the info of user with the provided token
+
+
+| Param | Type | Description |
+| --- | --- | --- |
+| token | <code>String</code> | Your ZEIT token |
+
+Resolves to a user object.
+
+### now.getTeams({token}) ⇒ <code>Promise</code>
+Get the teams that are related to the given token.
+
+| Param | Type | Description |
+| --- | --- | --- |
+| token | <code>String</code> | Your ZEIT token |
+
+Resolves to an array of teams.
 
 ## License
 
