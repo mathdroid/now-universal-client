@@ -29,7 +29,7 @@ api.handleRequest = ({ method, url, data, token }) => {
     })
     .catch(err => {
       const { response: { data = { error: "No data" } } } = err;
-      return reject(data);
+      return reject(new Error(data));
     });
 };
 
