@@ -27,8 +27,10 @@ meta.handleRequest = ({ method, url, data, token }) => {
       return resolve(data);
     })
     .catch(err => {
-      const { response: { data = { error: "No data" } } } = err;
-      return reject(new Error(data));
+      const {
+        response: { data: { error: { message = "Unhandled Error" } } }
+      } = err;
+      return reject(new Error(message));
     });
 };
 
